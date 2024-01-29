@@ -1,5 +1,9 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 
 _pkgname=markdown-it-py
 pkgname=python-$_pkgname
@@ -31,9 +35,13 @@ check() {
 package() {
   cd $_pkgname-$pkgver
 
-  python -m installer -d "$pkgdir" dist/*.whl
+  python \
+    -m \
+      installer \
+    --destdir="${pkgdir}" \
+    dist/*.whl
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
